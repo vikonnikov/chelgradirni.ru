@@ -1,0 +1,12 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}" />
+        <title>{{ flatpage.title }}</title>
+    </head>
+    <body>
+        {{ flatpage.content }}
+    </body>
+</html>
