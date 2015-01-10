@@ -1,0 +1,17 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Страница не найдена.</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
+    </head>
+
+    <body>
+        <div class="notfound">
+            <img src="{% static 'core/images/water.png' %}">
+            <div class="notfound__text">Извините, данная страница не найдена.</div>
+        </div>
+    </body>
+</html>

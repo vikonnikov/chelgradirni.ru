@@ -213,3 +213,19 @@ li {
 }
 .about-gradirnya__pros li:before{ content:"—"; position:relative; left:-5px;}
 .about-gradirnya__pros li{ text-indent:-11px; }
+
+.notfound {
+    bottom: 0;
+    height: 305px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 360px;
+}
+.notfound__text {
+    font-family: RobotoLight;
+    padding-top: 15px;
+    text-align: center;
+}

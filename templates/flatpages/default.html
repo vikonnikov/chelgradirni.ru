@@ -1,47 +1,49 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<head>
-	<title>{{ flatpage.title }}</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
-</head>
+<html>
+    <head>
+        <title>{{ flatpage.title }}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
+    </head>
 
-<body>
-	<div class="wrapper block">
-		<header>
-			<span class="phone">
-				Тел. (351) 222-22-22
-			</span>
-		</header>
-		<div class="content block">
-			<div class="content__main">
-				<div class="content-main__menu">
-					<ul class="left__menu">
-                        {% for section in sections %}
-						<li>
-							<a href="{{ section.slug }}" class="left-menu__text">{{ section.title }}</a>
-						</li>
-                        {% endfor %}
-					</ul>
-				</div>
+    <body>
+        <div class="wrapper block">
+            <header>
+                <span class="phone">
+                    Тел. (351) 222-22-22
+                </span>
+            </header>
+            <div class="content block">
+                <div class="content__main">
+                    <div class="content-main__menu">
+                        <ul class="left__menu">
+                            {% for section in sections %}
+                            <li>
+                                <a href="{{ section.slug }}" class="left-menu__text">{{ section.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
 
-				<section>
+                    <section>
 
-                    {{ flatpage.content }}
+                        {{ flatpage.content }}
 
-				</section>
-			</div>
-		</div>
-		<div class="footer">
-			<div class="footer__text">
-				<div>Общество с ограниченной ответственностью</div>
-				<a href="mailto: chelgradirni@mail.ru" class="firm-label">
-					<img src="{% static 'core/images/label.png' %}" alt="ООО Алдан. Email: chelgradirni@mail.ru">
-					<span>Алдан</span>
-				</a>
-				<div class="email">email: chelgradirni@mail.ru</div>
-			</div>
-		</div>
-	</div>
-</body>
+                    </section>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer__text">
+                    <div>Общество с ограниченной ответственностью</div>
+                    <a href="mailto: chelgradirni@mail.ru" class="firm-label">
+                        <img src="{% static 'core/images/label.png' %}" alt="ООО Алдан. Email: chelgradirni@mail.ru">
+                        <span>Алдан</span>
+                    </a>
+                    <div class="email">email: chelgradirni@mail.ru</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
