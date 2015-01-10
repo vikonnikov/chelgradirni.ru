@@ -13,14 +13,12 @@ urlpatterns += patterns('',
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
 )
 
-from django.conf import settings
-from django.conf.urls.static import static
-
-urlpatterns += patterns('',
-    ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-urlpatterns += patterns('',
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+try:
+    import local_urls
+except ImportError:
+    pass
+else:
+    urlpatterns += local_urls.urlpatterns
 
 urlpatterns += patterns('core.views',
     (r'^(?P<url>.*?/)$', 'flatpage'),
