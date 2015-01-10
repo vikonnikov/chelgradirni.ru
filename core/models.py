@@ -6,5 +6,5 @@ class Section(models.Model):
     slug = models.CharField(max_length=100)
     position = models.IntegerField()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
