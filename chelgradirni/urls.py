@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^google5a5a66ed4665c7ff.html$', 'core.views.google_verification'),
     url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {
         'flatpages': FlatPageSitemap}}),
     url(r'^robots.txt$', 'core.views.robots'),
