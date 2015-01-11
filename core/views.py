@@ -36,7 +36,7 @@ def render_flatpage_fix(request, f):
 ftviews.render_flatpage = render_flatpage_fix
 
 def robots(request):
-    return HttpResponse('User-agent: *\nDisallow: /staff', mimetype="text/plain")
+    return HttpResponse('User-agent: *\nDisallow: /staff', content_type="text/plain")
 
 def google_verification(request):
     return HttpResponse('google-site-verification: google5a5a66ed4665c7ff.html', content_type="text/plain")
