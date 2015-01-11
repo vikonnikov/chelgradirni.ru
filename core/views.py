@@ -39,4 +39,4 @@ def robots(request):
     return HttpResponse('User-agent: *\nDisallow: /staff', mimetype="text/plain")
 
 def google_verification(request):
-    return HttpResponse('google-site-verification: google5a5a66ed4665c7ff.html', mimetype="text/plain")
+    return HttpResponse('google-site-verification: google5a5a66ed4665c7ff.html', content_type="text/plain")
