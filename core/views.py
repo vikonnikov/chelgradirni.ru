@@ -34,3 +34,6 @@ def render_flatpage_fix(request, f):
     return response
 
 ftviews.render_flatpage = render_flatpage_fix
+
+def robots(request):
+    return HttpResponse('User-agent: *\nDisallow: /staff', mimetype="text/plain")

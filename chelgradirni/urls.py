@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.contrib.sitemaps import FlatPageSitemap
 
 urlpatterns = patterns('',
     # Examples:
@@ -7,6 +8,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {
+        'flatpages': FlatPageSitemap}}),
+    url(r'^robots.txt$', 'core.views.robots'),
 )
 
 urlpatterns += patterns('',
