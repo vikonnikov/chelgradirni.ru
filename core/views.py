@@ -40,3 +40,6 @@ def robots(request):
 
 def google_verification(request):
     return HttpResponse('google-site-verification: google5a5a66ed4665c7ff.html', content_type="text/plain")
+
+def yandex_verification(request):
+    return HttpResponse('', mimetype="text/plain")
