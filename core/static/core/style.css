@@ -7,6 +7,12 @@
     font-family: Roboto;
     src: url("./fonts/Roboto-Regular.ttf");
 }
+
+@font-face {
+    font-family: RobotoMedium;
+    src: url("./fonts/Roboto-Medium.ttf");
+}
+
 @font-face {
     font-family: RobotoBoldItalic;
     src: url("./fonts/Roboto-BoldItalic.ttf");
@@ -40,13 +46,34 @@ header {
 	text-align: left;
 	width: 925px;
 }
-.phone {
+.top__text {
 	background-color: rgba(255,255,255,.3);
 	color: #6286C4;
-	font-size: 20px;
+	display: inline-block;
+	float: left;
+	padding: 9px 20px 20px;
+	text-align: center;
+	width: 200px;
+}
+.top-menu {
+	display: inline-block;
+	padding: 15px;
+	text-align: center;
+	width: 655px;
+}
+.top-menu ul {
+    margin: 0px;
+}
+.top-menu li {
+	display: inline-block;
+	margin: 10px 17px;
+}
+.phone {
+	color: #6286C4;
+	font-size: 18px;
     font-weight: bold;
-	line-height: 46px;
-	padding: 15px; 
+	line-height: 20px;
+	padding-top: 5px;
 }
 .content {
 	background: url("./images/main_l.png") transparent no-repeat bottom center;
@@ -84,7 +111,8 @@ li {
 .left__menu {
     margin: 0px;
 }
-.left-menu__text {
+.left-menu__text,
+.top-menu__text{
 	color: #707070;
     font-family: RobotoLight;
     font-size: 14px;
@@ -93,13 +121,18 @@ li {
 .left-menu__text:hover {
 	color: #000;
 }
+.left-menu__selected {
+    color: #6286C4;
+    font-family: RobotoMedium;
+    font-size: 14px;
+}
 .content-main__center {
 	display: table;
 	width: 710px;
 }
 .footer {
 	bottom: 10px;
-	margin-top: -105px;
+	margin-top: -60px;
 	position: relative;
 	right: 0;
 	text-align: right;
@@ -117,6 +150,7 @@ li {
 	display: inline-block;
 }
 .firm-label {
+    color: #1d8be2;
 	text-decoration: none;
     font-family: RobotoBoldItalic;
 	font-size: 38px;

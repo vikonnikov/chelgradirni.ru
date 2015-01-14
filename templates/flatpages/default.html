@@ -12,9 +12,27 @@
         <h1 style="display: none;">{{ flatpage.title }}</h1>
         <div class="wrapper block">
             <header>
-                <span class="phone">
-                    Тел. (351) 776-22-07
-                </span>
+                <div class="top__text">
+                    <a href="mailto: chelgradirni@mail.ru" class="firm-label">
+                        <img src="{% static 'core/images/label.png' %}" alt="ООО Алдан. Email: chelgradirni@mail.ru">
+                        <span>Алдан</span>
+                    </a>
+                    <div class="email">email: chelgradirni@mail.ru</div>
+                    <div class="phone">Тел. (351) 776-22-07</div>
+                </div>
+                <div class="top-menu">
+                    <ul>
+                        {% for section in sections %}
+                            <li>
+                                {% if section.slug == flatpage.url %}
+                                    <span class="left-menu__selected">{{ section.title }}</span>
+                                {% else %}
+                                    <a href="{{ section.slug }}" class="top-menu__text">{{ section.title }}</a>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                    </ul>
+                </div>
             </header>
             <div class="content block">
                 <div class="content__main">
@@ -22,7 +40,11 @@
                         <ul class="left__menu">
                             {% for section in sections %}
                             <li>
-                                <a href="{{ section.slug }}" class="left-menu__text">{{ section.title }}</a>
+                                {% if section.slug == flatpage.url %}
+                                    <span class="left-menu__selected">{{ section.title }}</span>
+                                {% else %}
+                                    <a href="{{ section.slug }}" class="left-menu__text">{{ section.title }}</a>
+                                {% endif %}
                             </li>
                             {% endfor %}
                         </ul>
@@ -37,12 +59,10 @@
             </div>
             <div class="footer">
                 <div class="footer__text">
-                    <div>Общество с ограниченной ответственностью</div>
                     <a href="mailto: chelgradirni@mail.ru" class="firm-label">
                         <img src="{% static 'core/images/label.png' %}" alt="ООО Алдан. Email: chelgradirni@mail.ru">
                         <span>Алдан</span>
                     </a>
-                    <div class="email">email: chelgradirni@mail.ru</div>
                 </div>
 
                 <div class="yandex-metrica">
