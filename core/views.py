@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.contrib.flatpages import views as ftviews
 from django.contrib.flatpages.views import *
+from django.conf import settings
+from photologue.models import Gallery
+
+import os
 
 from core.models import Section
 # Create your views here.
@@ -28,8 +32,10 @@ def render_flatpage_fix(request, f):
 
     c = RequestContext(request, {
         'flatpage': f,
-        'sections': Section.objects.order_by('position')
+        'sections': Section.objects.order_by('position'),
+        'gallery': Gallery.objects.get(id=settings.PRODUCTS_GALLERY_ID) if 'products' in request.path else None
     })
+
     response = HttpResponse(t.render(c))
     return response
 

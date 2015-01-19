@@ -52,6 +52,11 @@
                     </div>
 
                     <section>
+                        {% if gallery %}
+                            {% for photo in gallery.public %}
+                            <div style="display: inline-block; padding: 5px; border: 1px solid #777777; margin: 5px; background-color: #ececec;"><img src="{{ photo.get_product_url }}" alt="photo.title"></div>
+                            {% endfor %}
+                        {% endif %}
 
                         {{ flatpage.content }}
 
