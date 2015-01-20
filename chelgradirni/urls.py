@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.sitemaps import FlatPageSitemap
+from photologue.sitemaps import PhotoSitemap
 
 urlpatterns = patterns('',
     # Examples:
@@ -11,7 +12,8 @@ urlpatterns = patterns('',
     url(r'^google5a5a66ed4665c7ff.html$', 'core.views.google_verification'),
     url(r'^yandex_689db1240a05a501.txt$', 'core.views.yandex_verification'),
     url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {
-        'flatpages': FlatPageSitemap}}),
+        'flatpages': FlatPageSitemap,
+        'photologue_photos': PhotoSitemap}}),
     url(r'^robots.txt$', 'core.views.robots'),
 )
 

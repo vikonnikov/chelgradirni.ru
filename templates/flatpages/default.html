@@ -5,8 +5,15 @@
     <head>
         <title>{{ flatpage.title }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'core/js/fancybox/jquery.fancybox-1.3.4.css' %}" />
         <script type="text/javascript" src="{% static 'core/js/jquery-1.11.2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'core/js/fancybox/jquery.fancybox-1.3.4.js' %}"></script>
+        <script>
+            $(document).ready(function(){
+                $("a.gallery").fancybox();
+            });
+        </script>
     </head>
 
     <body>
@@ -54,7 +61,10 @@
                     <section>
                         {% if gallery %}
                             {% for photo in gallery.public %}
-                            <div style="display: inline-block; padding: 5px; border: 1px solid #777777; margin: 5px; background-color: #ececec;"><img src="{{ photo.get_product_url }}" alt="photo.title"></div>
+                            <div class="content__product">
+                                <a class="gallery" rel="group" href="{{ photo.image.url }}"><img class="content__product-image" src="{{ photo.get_product_url }}" alt="{{ photo.title }}"></a>
+                                <span class="content__product-title">{{ photo.title }}</span>
+                            </div>
                             {% endfor %}
                         {% endif %}
 
