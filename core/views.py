@@ -6,8 +6,27 @@ from photologue.models import Gallery
 
 import os
 
-from core.models import Section
+from core.models import Section, Page, MenuItem
 # Create your views here.
+
+def page(request, url):
+    if not url.startswith('/'):
+        url = '/' + url
+    try:
+        page = get_object_or_404(Page, url=url)
+    except Http404:
+        if not url.endswith('/') and settings.APPEND_SLASH:
+            url += '/'
+            page = get_object_or_404(Page, url=url)
+            return HttpResponsePermanentRedirect('%s/' % request.path)
+        else:
+            raise
+
+    return render(request, 'base.html', {
+        'page': page,
+        'sections': MenuItem.objects.order_by('position'),
+        'gallery': Gallery.objects.get(id=settings.PRODUCTS_GALLERY_ID) if 'products' in request.path else None
+        }, content_type="text/html")
 
 @csrf_protect
 def render_flatpage_fix(request, f):
@@ -31,7 +50,7 @@ def render_flatpage_fix(request, f):
     f.content = mark_safe(f.content)
 
     c = RequestContext(request, {
-        'flatpage': f,
+        'page': f,
         'sections': Section.objects.order_by('position'),
         'gallery': Gallery.objects.get(id=settings.PRODUCTS_GALLERY_ID) if 'products' in request.path else None
     })

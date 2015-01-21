@@ -15,9 +15,6 @@ urlpatterns = patterns('',
         'flatpages': FlatPageSitemap,
         'photologue_photos': PhotoSitemap}}),
     url(r'^robots.txt$', 'core.views.robots'),
-)
-
-urlpatterns += patterns('',
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
 )
 
@@ -29,5 +26,5 @@ else:
     urlpatterns += local_urls.urlpatterns
 
 urlpatterns += patterns('core.views',
-    (r'^(?P<url>.*?/)$', 'flatpage'),
+(r'^(?P<url>.*?)$', 'page')
 )
