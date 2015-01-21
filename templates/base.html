@@ -1,0 +1,151 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ page.title }}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="description" content="{{ page.description }}">
+        <meta name="keywords" content="{{ page.kwds }}">
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'core/js/fancybox/jquery.fancybox-1.3.4.css' %}" />
+        <script type="text/javascript" src="{% static 'core/js/jquery-1.11.2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'core/js/fancybox/jquery.fancybox-1.3.4.js' %}"></script>
+        <script>
+            $(document).ready(function(){
+                $("a.gallery").fancybox();
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1 style="display: none;">{{ page.title }}</h1>
+        <div class="wrapper block">
+            <header>
+                <div class="top__text">
+                    <a href="mailto: chelgradirni@mail.ru" class="firm-label">
+                        <img src="{% static 'core/images/label.png' %}" alt="ООО Алдан. Email: chelgradirni@mail.ru">
+                        <span>Алдан</span>
+                    </a>
+                    <div class="email">email: chelgradirni@mail.ru</div>
+                    <div class="phone">Тел. (351) 776-22-07</div>
+                </div>
+                <div class="top-menu">
+                    <ul>
+                        {% for section in sections %}
+                            <li>
+                                {% if section.page.url == page.url %}
+                                    <span class="left-menu__selected">{{ section.title }}</span>
+                                {% else %}
+                                    <a href="{{ section.page.url }}" class="top-menu__text">{{ section.title }}</a>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                    </ul>
+                </div>
+            </header>
+            <div class="content block">
+                <div class="content__main">
+                    <div class="content-main__menu">
+                        <ul class="left__menu">
+                            {% for section in sections %}
+                            <li>
+                                {% if section.page.url == page.url %}
+                                    <span class="left-menu__selected">{{ section.title }}</span>
+                                {% else %}
+                                    <a href="{{ section.page.url }}" class="left-menu__text">{{ section.title }}</a>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <section>
+                        {% if gallery %}
+                            {% for photo in gallery.public %}
+                            <div class="content__product">
+                                <a class="gallery" rel="group" href="{{ photo.image.url }}"><img class="content__product-image" src="{{ photo.get_product_url }}" alt="{{ photo.title }}"></a>
+                                <span class="content__product-title">{{ photo.title }}</span>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        {{ page.content }}
+
+                    </section>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer__text">
+                    <a href="mailto: chelgradirni@mail.ru" class="firm-label">
+                        <img src="{% static 'core/images/label.png' %}" alt="ООО Алдан. Email: chelgradirni@mail.ru">
+                        <span>Алдан</span>
+                    </a>
+                </div>
+
+                <div class="yandex-metrica">
+<!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=27873342&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/27873342/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:27873342,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter27873342 = new Ya.Metrika({id:27873342,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/27873342" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40288682-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+                <div style="display: none;" itemscope itemtype="http://schema.org/Organization">
+                  <a itemprop="url" href="http://chelgradirni.ru"><span itemprop="name">ООО Алдан</span></a>>
+                  Контакты:
+                  <div itemprop="description">Разработка и проектирование градирен.
+                  Продажа градирен в Челябинске.</div>
+                  <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    Адрес:
+                    <span itemprop="streetAddress">ул.Братьев Кашириных, д.87А, оф.53</span>
+                    <span itemprop="postalCode">454016</span>
+                    <span itemprop="addressLocality">Челябинск</span>,
+                  </div>
+                  Телефон:<span itemprop="telephone">+7 351 776-22-07</span>,
+                  Электронная почта: <span itemprop="email">chelgradirni@mail.ru</span>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>
